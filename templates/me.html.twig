@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Me{% endblock %}
+
+{% block body %}
+        <h1>Om mig</h1>
+    <p>Hej, mitt namn är Emil Lindström och jag pluggar distansutbildningen Webprogrammering. Jag är 37 år från Uppsala och biomedicinare från början. Jag blev sugen på att skola om mig och det är därför jag går den här utbildningen. Just nu läser vi kursen som vi kallar MVC. Ser fram emot att lära mig mycket mer.</p>
+    <a href="{{ asset('../img/Profil.jpg') }}">
+        <img src="{{ asset('../img/Profil.jpg') }}" alt="">
+    </a>
+    
+{% endblock %}

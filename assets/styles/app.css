@@ -9,7 +9,7 @@ p {}
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #dbdbdb;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
     display: flex;
@@ -75,4 +75,13 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
+}
+
+.aboutsplit {
+    display: flex;
+    
+}
+.pleft {
+    width: 400px;
+    padding-right: 40px;
 }

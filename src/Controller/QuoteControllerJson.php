@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class QuoteControllerJson
 {
 
-    #[Route("/api/quote")]
+    #[Route("/api/quote", name: "api/quote")]
     public function jsonCitat(): Response
     {
         

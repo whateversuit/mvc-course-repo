@@ -14,10 +14,10 @@ class Controller extends AbstractController
         $number = random_int(0, 100);
         $backgroundColor = $number % 2 === 0 ? "#b3ffb3" : "#ff0000";
 
-        $returnContent = '<html><body>Lucky number: '.$number.'</body></html>';
-        $returnContent .= '<html><body style="background-color: '.$backgroundColor.';">';
-
-        return new Response($returnContent);
+        return $this->render('lucky.html.twig', [
+            'number' => $number,
+            'backgroundColor' => $backgroundColor,
+        ]);
     }
 
     #[Route("/", name: "me")]

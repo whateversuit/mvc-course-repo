@@ -8,11 +8,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class QuoteControllerJson
 {
-
     #[Route("/api/quote", name: "api/quote")]
     public function jsonCitat(): Response
     {
-        
+
         $quotes = [
             "1" => "Den längsta resan för var och en är den inre resan. - Dag Hammarskjöld",
             "2" => "Alla människor borde behandlas som luft - något absolut livsnödvändigt. - Stig Johansson",
@@ -21,7 +20,7 @@ class QuoteControllerJson
             "5" => "Folks längtan efter frihet kan i det långa loppet inte slås ner. Den kommer att leva och segra till sist. -Olof Palme"
         ];
 
-        
+
         $selectedQuote = array_rand($quotes);
         $today = date("Y-m-d");
         $timestamp = date("H:i:s");

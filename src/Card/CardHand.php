@@ -1,5 +1,7 @@
 <?php
 
-class CardHand {
+namespace App\Card;
 
+class CardHand
+{
 }

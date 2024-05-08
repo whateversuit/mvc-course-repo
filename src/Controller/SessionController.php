@@ -9,11 +9,11 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class SessionController extends AbstractController
-{   
+{
     #[Route("/session", name: "session")]
     public function sessionAll(SessionInterface $session): Response
     {
-    
+
         $data = [
             'session' => $session->all()
         ];
@@ -28,4 +28,5 @@ class SessionController extends AbstractController
 
         return $this->redirectToRoute('session');
     }
+
 }

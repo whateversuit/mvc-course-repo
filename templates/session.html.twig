@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<p>The session contains:</p><br>
+
+{{ dump(session) }}<br>
+<a href="{{ path('session_delete') }}">Delete Session</a>
+
+{% for flashMessage in app.flashes('success') %}
+
+        <div class="flash-message">{{ flashMessage }}</div>
+        
+    {% endfor %}
+
+{% endblock %}

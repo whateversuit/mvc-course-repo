@@ -23,9 +23,23 @@ class CardGameController extends AbstractController
     public function showDeck(SessionInterface $session): Response
     {
         $deck = $session->get('deck', new DeckOfCards());
+        $deckString = $deck->getDeckAsString();
+        $session->set('deckString', $deckString);
+
 
         return $this->render('deck.html.twig', [
             'cards' => $deck->getCards()
         ]);
+    }
+    
+    #[Route("/card/deck/shuffle", name: "card_deck_shuffle")]
+    public function shuffleDeck(SessionInterface $session): Response
+    {
+        $deck = new DeckOfCards();
+        $deck->shuffleDeck();
+        $session->set('deck', $deck);
+
+        
+        return $this->redirectToRoute('card_deck');
     }
 }

@@ -18,6 +18,7 @@ class DeckOfCards {
 
     public function shuffleDeck() {
         shuffle($this->cards);
+
     }
 
     public function drawCard() {

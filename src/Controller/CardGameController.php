@@ -22,10 +22,7 @@ class CardGameController extends AbstractController
     #[Route("/card/deck", name: "card_deck")]
     public function showDeck(SessionInterface $session): Response
     {
-        $deck = $session->get('deck', new DeckOfCards());
-        $deckString = $deck->getDeckAsString();
-        $session->set('deckString', $deckString);
-
+        $deck = $this->getOrCreateDeck($session);
 
         return $this->render('deck.html.twig', [
             'cards' => $deck->getCards()
@@ -46,15 +43,47 @@ class CardGameController extends AbstractController
     #[Route("/card/deck/draw", name: "card_deck_draw")]
     public function drawCard(SessionInterface $session): Response
     {
-        $deck = $session->get('deck', new DeckOfCards());
+        $deck = $this->getOrCreateDeck($session);
         $randomCard = $deck->drawRandomCard();
         $remainingCardsCount = $deck->getRemainingCardsCount();
         
 
         return $this->render('draw.html.twig', [
+            
             'randomCard' => $randomCard,
             'remainingCardsCount' => $remainingCardsCount
         ]);
     
     }
+    #[Route("/card/deck/draw/{number}", name: "card_deck_draw_number")]
+    public function drawMultipleCards(SessionInterface $session, $number): Response
+    {
+        $deck = $this->getOrCreateDeck($session);
+        $hand = $session->get('hand', new CardHand());
+    
+        for ($i = 0; $i < $number; $i++) {
+            $hand->addCard($deck->drawRandomCard());
+        }
+    
+        $session->set('deck', $deck);
+        $session->set('hand', $hand);
+    
+        return $this->render('draw_hand.html.twig', [
+            'drawnCards' => $hand->getCards(),
+            
+        ]);
+    }
+
+    private function getOrCreateDeck(SessionInterface $session): DeckOfCards
+    {
+        if (!$session->has('deck')) {
+            $deck = new DeckOfCards();
+            $session->set('deck', $deck);
+        } else {
+            $deck = $session->get('deck');
+        }
+
+        return $deck;
+    }
 }
+

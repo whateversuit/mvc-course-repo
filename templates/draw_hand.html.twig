@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Drawn Card{% endblock %}
+
+{% block body %}
+    <h1>Kort i din hand</h1>
+    {% for card in drawnCards %}
+    <span class ="cards" >{{ card.getAsString() }}</span>
+        {% endfor %}
+    
+{% endblock %}

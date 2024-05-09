@@ -3,7 +3,7 @@
 {% block title %}Drawn Card{% endblock %}
 
 {% block body %}
-    <h1>Drawn Card</h1>
-    <p>{{ randomCard.getAsString() }}</p>
-    <p>Remaining Cards: {{ remainingCardsCount }}</p>
+    <h1>Dra ett random kort ur kortleken</h1>
+    <span class ="cards" >{{ randomCard.getAsString() }}</span><br>
+    <span class ="cards" >{{ remainingCardsCount }}</span>
 {% endblock %}

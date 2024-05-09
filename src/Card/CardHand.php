@@ -13,9 +13,7 @@ class CardHand {
         $this->cards[] = $card;
     }
 
-    public function showHand() {
-        foreach ($this->cards as $card) {
-            echo $card . ' ';
-        }
+    public function getCards() {
+        return $this->cards;
     }
 }

@@ -1,10 +1,13 @@
 <?php
+
 namespace App\Card;
 
-class DeckOfCards {
+class DeckOfCards
+{
     private $cards;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->cards = [];
         $suits = ['♥', '♦', '♣', '♠'];
         $values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
@@ -16,35 +19,41 @@ class DeckOfCards {
         }
     }
 
-    public function shuffleDeck() {
+    public function shuffleDeck()
+    {
         shuffle($this->cards);
 
     }
-    
-    public function drawRandomCard() {
+
+    public function drawRandomCard()
+    {
         $index = array_rand($this->cards);
         $randomCard = $this->cards[$index];
         unset($this->cards[$index]);
         return $randomCard;
     }
 
-    public function drawCard() {
+    public function drawCard()
+    {
         return array_pop($this->cards);
     }
 
-    public function getRemainingCardsCount() {
+    public function getRemainingCardsCount()
+    {
         return count($this->cards);
     }
-    
-    public function getCards() {
+
+    public function getCards()
+    {
         return $this->cards;
     }
-    public function getDeckAsString() {
+    public function getDeckAsString()
+    {
         $deckString = '';
         foreach ($this->cards as $card) {
             $deckString .= $card->getAsString() . ', ';
         }
-        
+
         $deckString = rtrim($deckString, ', ');
 
         return $deckString;

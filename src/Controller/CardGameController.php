@@ -42,4 +42,19 @@ class CardGameController extends AbstractController
         
         return $this->redirectToRoute('card_deck');
     }
+
+    #[Route("/card/deck/draw", name: "card_deck_draw")]
+    public function drawCard(SessionInterface $session): Response
+    {
+        $deck = $session->get('deck', new DeckOfCards());
+        $randomCard = $deck->drawRandomCard();
+        $remainingCardsCount = $deck->getRemainingCardsCount();
+        
+
+        return $this->render('draw.html.twig', [
+            'randomCard' => $randomCard,
+            'remainingCardsCount' => $remainingCardsCount
+        ]);
+    
+    }
 }

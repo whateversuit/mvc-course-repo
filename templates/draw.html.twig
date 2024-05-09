@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Drawn Card{% endblock %}
+
+{% block body %}
+    <h1>Drawn Card</h1>
+    <p>{{ randomCard.getAsString() }}</p>
+    <p>Remaining Cards: {{ remainingCardsCount }}</p>
+{% endblock %}

@@ -20,6 +20,12 @@ class DeckOfCards {
         shuffle($this->cards);
 
     }
+    public function drawRandomCard() {
+        $index = array_rand($this->cards);
+        $randomCard = $this->cards[$index];
+        unset($this->cards[$index]);
+        return $randomCard;
+    }
 
     public function drawCard() {
         return array_pop($this->cards);

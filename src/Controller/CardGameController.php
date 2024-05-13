@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Card\Card;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
+use App\Card\JokerDeck;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -76,6 +77,16 @@ class CardGameController extends AbstractController
 
         ]);
     }
+
+    #[Route("/card/deck/jokers", name: "card_deck_jokers")]
+    public function initializeDeckWithJokers(SessionInterface $session): Response
+    {
+        $deck = new JokerDeck();
+        $session->set('deck', $deck);
+
+        return $this->redirectToRoute('card_deck');
+    }
+
 
     private function getOrCreateDeck(SessionInterface $session): DeckOfCards
     {

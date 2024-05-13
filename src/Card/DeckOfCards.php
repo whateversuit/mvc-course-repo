@@ -4,7 +4,7 @@ namespace App\Card;
 
 class DeckOfCards
 {
-    private $cards;
+    protected $cards;
 
     public function __construct()
     {

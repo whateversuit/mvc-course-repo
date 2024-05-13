@@ -13,5 +13,10 @@
         <label for="numberInput">Dra</label>
         <input type="number" name="number" id="numberInput" min="1" value="1">
         <input type="submit" name="draw" value="kort till hand">
-    </form>
+    </form><br><br>
+<h3>Beskrivning av klasserna som används för detta kursmoment</h3><br>
+<p>DeckOfCards: Innehåler  array av korten i kortleken. Den har en konstruktor för att skapa en ny kortlek. Metoderna till denna klass är: shuffleDeck() som blandar kortleken, drawRandomCard() för att slumpmässigt dra ett kort </p>
+    <a href="{{ asset('../img/klasserUML.png') }}">
+        <img src="{{ asset('../img/klasserUML.png') }}" alt="">
+    </a>
 {% endblock %}

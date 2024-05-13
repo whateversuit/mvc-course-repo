@@ -34,10 +34,11 @@ class CardGameController extends AbstractController
     #[Route("/card/deck/shuffle", name: "card_deck_shuffle", )]
     public function shuffleDeck(SessionInterface $session): Response
     {
-        $deck = new DeckOfCards();
-        $deck->shuffleDeck();
-        $session->set('deck', $deck);
-
+        $deck = $session->get('deck');
+        if ($deck instanceof DeckOfCards) {
+            $deck->shuffleDeck();
+            $session->set('deck', $deck);
+        }
 
         return $this->redirectToRoute('card_deck');
     }

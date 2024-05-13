@@ -14,8 +14,19 @@
         <input type="number" name="number" id="numberInput" min="1" value="1">
         <input type="submit" name="draw" value="kort till hand">
     </form><br><br>
-<h3>Beskrivning av klasserna som används för detta kursmoment</h3><br>
-<p>DeckOfCards: Innehåler  array av korten i kortleken. Den har en konstruktor för att skapa en ny kortlek. Metoderna till denna klass är: shuffleDeck() som blandar kortleken, drawRandomCard() för att slumpmässigt dra ett kort </p>
+    <h3>Beskrivning av klasserna som används för detta kursmoment</h3><br>
+    <p>DeckOfCards: Innehåler  array av korten i kortleken. Den har en konstruktor för att skapa en ny kortlek. Metoderna till denna klass är: 
+        shuffleDeck() som blandar kortleken, drawRandomCard() för att slumpmässigt dra ett kort ur leken. drawCard() används inte detta kursmoment 
+        men den ska dra det översta kortet. getRemaingCardsCount() tar ut kvarvarande kort i leken. getCards() är en metod för att en array med 
+        alla kort i kortleken. getDeckAsString() är en metod för att skriva om hela leken till en sträng.</p><br>
+    <p>JokerDeck: Detta är en klass som ärver från DeckOfCards. Den ärver metoder från DeckOfCards. Den har en privat metod som adderar jokrar 
+        till kortleken när en JokerDeck skapas.</p><br>
+    <p>Card: Denna skapar enskilda spelkort utifrån suit och value. Den innehåller en konstruktor som tar emot värdet på 
+            suit och value och skapar ett card-objekt. Klassen innehåller bland annat metoden getAsString() som är en offentlig metod som returnerar en sträng av kortet genom att kombinera suit och value. 
+            Till exempel, om suit är "♠" och värdet är "A", kommer strängen "[A♠]" att returneras.</p><br>
+    <p>CardGameController: En Symfony-specifik klass som styr routes och alla mellanhänder. Den inehåller en metod som jag 
+        valde att sätta här för att kolla om det finns en kortlek i sessionen eller om det ska skapas en ny. </p><br>
+        
     <a href="{{ asset('../img/klasserUML.png') }}">
         <img src="{{ asset('../img/klasserUML.png') }}" alt="">
     </a>

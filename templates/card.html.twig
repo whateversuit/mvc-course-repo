@@ -1,9 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<p>Förstasidan för card.</p><br>
-
-
-
-
+    <p>Förstasidan för card.</p><br>
+    <ul>
+        <li><a href="{{ path('card_deck') }}">Kortlek</a></li>
+        <li><a href="{{ path('card_deck_shuffle') }}">Blanda kortlek</a></li>
+        <li><a href="{{ path('card_deck_draw') }}">Dra ett slumpmässigt kort ur leken</a></li>
+    </ul>
+    
+    <form method="post" action="{{ path('card_deck_draw_number', {'number': 0}) }}" id="drawForm">
+        <label for="numberInput">Dra</label>
+        <input type="number" name="number" id="numberInput" min="1" value="1">
+        <input type="submit" name="draw" value="kort till hand">
+    </form>
 {% endblock %}

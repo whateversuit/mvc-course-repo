@@ -7,5 +7,7 @@
     {% for card in drawnCards %}
     <span class ="cards" >{{ card.getAsString() }}</span>
         {% endfor %}
+    <br>
+    <span class ="cards" >{{ remainingCardsCount }}</span>
     
 {% endblock %}

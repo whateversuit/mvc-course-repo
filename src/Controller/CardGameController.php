@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class CardGameController extends AbstractController
 {
@@ -29,7 +30,7 @@ class CardGameController extends AbstractController
         ]);
     }
 
-    #[Route("/card/deck/shuffle", name: "card_deck_shuffle")]
+    #[Route("/card/deck/shuffle", name: "card_deck_shuffle", )]
     public function shuffleDeck(SessionInterface $session): Response
     {
         $deck = new DeckOfCards();
@@ -55,21 +56,22 @@ class CardGameController extends AbstractController
         ]);
 
     }
-    #[Route("/card/deck/draw/{number}", name: "card_deck_draw_number")]
-    public function drawMultipleCards(SessionInterface $session, $number): Response
-    {
+    #[Route("/card/deck/draw/{number<\d+>}", name: "card_deck_draw_number", methods: ["POST"])]
+    public function drawMultipleCards(SessionInterface $session, Request $request, $number): Response
+    {   $number = $request->request->get('number', $number);
         $deck = $this->getOrCreateDeck($session);
         $hand = $session->get('hand', new CardHand());
 
         for ($i = 0; $i < $number; $i++) {
             $hand->addCard($deck->drawRandomCard());
         }
-
+        $remainingCardsCount = $deck->getRemainingCardsCount();
         $session->set('deck', $deck);
         $session->set('hand', $hand);
 
         return $this->render('draw_hand.html.twig', [
             'drawnCards' => $hand->getCards(),
+            'remainingCardsCount' => $remainingCardsCount
 
         ]);
     }
@@ -81,8 +83,12 @@ class CardGameController extends AbstractController
             $session->set('deck', $deck);
         } else {
             $deck = $session->get('deck');
+            if (!$deck instanceof DeckOfCards) {
+                $deck = new DeckOfCards();
+                $session->set('deck', $deck);
+            }
         }
-
+    
         return $deck;
     }
 }

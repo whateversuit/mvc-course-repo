@@ -3,7 +3,11 @@
 {% block title %}Me{% endblock %}
 
 {% block body %}
-        <h1>API</h1>
-    <p>gå till route <a href="{{ path('api/quote') }}">API quotes</a> för dagens citat i JSON-format</p>
-    
+        <h1>API</h1><br>
+    <p>gå till route <a href="{{ path('api/quote') }}">API quotes</a> för dagens citat i JSON-format</p><br>
+    <p>gå till route <a href="{{ path('api_deck') }}">GET /api/deck'</a> för ny kortlek</p><br>
+    <p>gå till route <a href="{{ path('api_deck_shuffle') }}">POST /api/deck/shuffle'</a> för ny blandad kortlek</p><br>
+    <p>gå till route <a href="{{ path('api_deck_draw') }}">POST /api/deck/draw'</a> för att dra slumpmässigt kort ur lek</p><br>
+    <p>gå till route POST /api/deck/draw/{number} för att dra ett antal kort ur lek. Ersätt number med önskat nummer.</p><br>
+
 {% endblock %}

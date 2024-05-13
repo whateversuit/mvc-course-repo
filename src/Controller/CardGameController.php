@@ -58,7 +58,8 @@ class CardGameController extends AbstractController
     }
     #[Route("/card/deck/draw/{number<\d+>}", name: "card_deck_draw_number", methods: ["POST"])]
     public function drawMultipleCards(SessionInterface $session, Request $request, $number): Response
-    {   $number = $request->request->get('number', $number);
+    {
+        $number = $request->request->get('number', $number);
         $deck = $this->getOrCreateDeck($session);
         $hand = $session->get('hand', new CardHand());
 
@@ -88,7 +89,7 @@ class CardGameController extends AbstractController
                 $session->set('deck', $deck);
             }
         }
-    
+
         return $deck;
     }
 }

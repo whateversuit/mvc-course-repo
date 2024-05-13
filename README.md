@@ -7,3 +7,6 @@ http://www.student.bth.se/~emlx23/dbwebb-kurser/mvc/me/report/public
 
 Klona repot här:
 https://github.com/whateversuit/mvc-course-repo
+
+För att köra webbplatsen lokalt kan du använda dig av kommandot php -S localhost:8888 -t public i terminalen från mappen du klonat repot.
+Detta är en symfony php webserver.

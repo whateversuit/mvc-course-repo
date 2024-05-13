@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <p>Förstasidan för card.</p><br>
+    <h1>♠ Kortspelet ♠ </h1><br>
     <ul>
         <li><a href="{{ path('card_deck') }}">Kortlek</a></li>
         <li><a href="{{ path('card_deck_jokers') }}">Skapa Kortlek med Jokrar</a></li>
@@ -19,7 +19,7 @@
         shuffleDeck() som blandar kortleken, drawRandomCard() för att slumpmässigt dra ett kort ur leken. drawCard() används inte detta kursmoment 
         men den ska dra det översta kortet. getRemaingCardsCount() tar ut kvarvarande kort i leken. getCards() är en metod för att en array med 
         alla kort i kortleken. getDeckAsString() är en metod för att skriva om hela leken till en sträng.</p><br>
-    <p>JokerDeck: Detta är en klass som ärver från DeckOfCards. Den ärver metoder från DeckOfCards. Den har en privat metod som adderar jokrar 
+    <p>JokerDeck: Detta är en klass som ärver från DeckOfCards. Den har en privat metod som adderar jokrar 
         till kortleken när en JokerDeck skapas.</p><br>
     <p>Card: Denna skapar enskilda spelkort utifrån suit och value. Den innehåller en konstruktor som tar emot värdet på 
             suit och value och skapar ett card-objekt. Klassen innehåller bland annat metoden getAsString() som är en offentlig metod som returnerar en sträng av kortet genom att kombinera suit och value. 
